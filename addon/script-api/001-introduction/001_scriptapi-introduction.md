@@ -88,7 +88,7 @@ C:\Users\<UserName>\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\
 
 この中に、さらにディレクトリがあり、開発用途では `development_` の接頭語が書かれている中に作成します。今回は本番環境 (ワールドデータ) に設置するため、`minecraftWorlds` ディレクトリの中に入ります。ワールド名は完全にランダムなので、更新日順に並べ替えるとわかりやすいです。一番最新のフォルダを見てみましょう。
 
-![](https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/main/addon/script-api/001-introduction/media/01.jpg)
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/main/addon/script-api/001-introduction/media/01.jpg?token=GHSAT0AAAAAACWOUDUGHDBAPKGXYDHCDOOYZXIRSIA" vspace="10">
 
 何がなんだか・・・という感じではありますが、この中の `behavior_packs` に JS のファイルを配置していきます。ここからは VSCode をつかってファイルを見ていきますので、このフォルダまるごと VSCode から開いてみましょう。例えばこんな開き方があります。
 
@@ -97,7 +97,7 @@ C:\Users\<UserName>\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\
 
 VSCode のファイルエクスプローラーがこのようになれば準備完了です。
 
-![](https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/main/addon/script-api/001-introduction/media/02.jpg)
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/main/addon/script-api/001-introduction/media/02.jpg?token=GHSAT0AAAAAACWOUDUHTT2FPPTEGM4JU25MZXIRXMQ" vspace="10">
 
 ## Manifest ファイルの作成
 Manifest (マニフェスト) ファイルはアドオンの情報を記載したファイルです。これがないとマインクラフトからアドオンを読み込むことができませんので、 **必ず作成**してください。
@@ -159,7 +159,7 @@ https://learn.microsoft.com/ja-jp/minecraft/creator/reference/content/addonsrefe
 
 ここまでできたらマイクラを再起動してワールド設定を開き、ビヘイビアパックを有効にしてみてください。
 
-![](https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/main/addon/script-api/001-introduction/media/03.jpg)
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/main/addon/script-api/001-introduction/media/03.jpg?token=GHSAT0AAAAAACWOUDUGEIQBOG4IO2TRBTJEZXIRX7Q" vspace="10">
 
 ## プロジェクトの作成
 プログラムを書くために必要な設定、パッケージのインストールなどを行います。
@@ -270,7 +270,7 @@ tsc
 
 ではお待ちかね、マイクラで動きを確認してみましょう。ビヘイビアパックを有効化しているので、そのまま読み込むことができます。そのままゲームをプレイしてみてください。
 
-![](https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/main/addon/script-api/001-introduction/media/04.jpg)
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/main/addon/script-api/001-introduction/media/04.jpg?token=GHSAT0AAAAAACWOUDUGZL4U5ZDMMIITMSMMZXIRYNQ" vspace="10">
 
 画像のように、プレイヤーが参加した瞬間にメッセージが表示されていればOKです！
 
@@ -290,7 +290,7 @@ system.runInterval(() => {
 
 コマンドパレットにて `tsc` コマンドを実行して `main.js` を更新します。更新できたらマイクラで `/reload` コマンドを実行してスクリプトファイルを再度読み込みます。すると、画像のように1秒ごとに経過時間をお知らせしてくれます。
 
-![](https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/main/addon/script-api/001-introduction/media/05.jpg)
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/main/addon/script-api/001-introduction/media/05.jpg?token=GHSAT0AAAAAACWOUDUGQFZV46ZDOB32CDBGZXIRYVA" vspace="10">
 
 
 ということで最も躓きやすいポイント、環境構築を終えました。別のコンテンツでは Script API を活用したプログラムの作成方法についても記載していきます。
