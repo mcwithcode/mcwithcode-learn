@@ -13,7 +13,7 @@ Script API は統合版 (教育版) 向けのアドオンの一種で、JavaScri
 - ドキュメントを読みながら必要な関数を組み合わせられるようになる
 - カウントダウンタイマーのアドオンがつくれるようになる
 
-
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/main/addon/script-api/002-api_methods/media/timer.gif?token=GHSAT0AAAAAACWOUDUGTYYRZKG5FBXRMWWGZXJCLEQ" vspace="10">
 
 # プログラムの基本構文
 TypeScript入門というわけではありませんが、マイクラ上で Script API を動かすのにあった方が良い前提知識をいくつか掲載します。
@@ -201,11 +201,11 @@ https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/w
 
 このリンクは `World` クラスのドキュメントです。急に「クラス」とか言われて良くわからんかもしれませんが、「関数などが集まった便利な道具箱」だと思ってください。この中に入っている関数 (機能) を組み合わせていろいろ作ります。ちょっと下へスクロールすると Methods という項目があります。これが関数です。
 
-
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/main/addon/script-api/002-api_methods/media/01.jpg?token=GHSAT0AAAAAACWOUDUGC5Q27FUA4PQ7QBZCZXJCJTQ" vspace="10">
 
 では `sendMessage` を見てみましょう。
 
-
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/main/addon/script-api/002-api_methods/media/02.jpg?token=GHSAT0AAAAAACWOUDUHY5QNOE2WAL6YLVDQZXJCKVQ" vspace="10">
 
 いろいろ書いてありますが重要な部分だけ抜き出すなら Parameters の部分です。パラメータは関数に代入すべき引数のことを指します。この例だと
 
@@ -279,6 +279,9 @@ system.runInterval(() => {
 }, 20);
 ```
 できたら `tsc` でトランスパイル＆マイクラで `/reload` コマンドを実行して動かしてみてください。
+
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/main/addon/script-api/002-api_methods/media/timer.gif?token=GHSAT0AAAAAACWOUDUGTYYRZKG5FBXRMWWGZXJCLEQ" vspace="10">
+
 ちなみに、以下は文字列補完という書き方で、文字列の中に変数を埋め込むことができます。
 
 ```ts
