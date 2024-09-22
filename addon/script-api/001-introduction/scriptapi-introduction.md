@@ -82,7 +82,7 @@ Version 5.6.2
 ## ファイルの作成場所
 アドオンを作成するためのファイルディレクトリはここです。
 
-```
+```txt
 C:\Users\<UserName>\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang
 ```
 
@@ -140,7 +140,7 @@ https://learn.microsoft.com/ja-jp/minecraft/creator/reference/content/addonsrefe
 
 ここまでのファイル構成はこんな感じです。`behavior_packs` から先にファイルが存在していればOKです。
 
-```
+```txt
 │  level.dat
 │  level.dat_old
 │  levelname.txt
@@ -200,7 +200,7 @@ npm install typescript @minecraft/server
 
 ここまでのファイル構成はこんな感じです。
 
-```
+```txt
 ├─behavior_packs
 │  └─script_api_bp
 │         manifest.json
@@ -228,8 +228,8 @@ npm install typescript @minecraft/server
 ```ts
 import { world } from "@minecraft/server";
 
-world.afterEvents.worldInitialize.subscribe(() => {
-    world.sendMessage("ワールドが初期化されたよ！");
+world.afterEvents.playerSpawn.subscribe(() => {
+    world.sendMessage("プレイヤーがスポーンしたよ！");
 });
 ```
 
@@ -241,7 +241,7 @@ tsc
 
 たったこれだけで、`behavior_packs/script_api_bp` の中に自動で `scripts` ディレクトリが作成されて、その中に本体となる `main.js` が生成されます。
 
-```
+```txt
 ├─behavior_packs
 │  └─script_api_bp
 │      │  manifest.json
