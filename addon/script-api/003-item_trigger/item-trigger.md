@@ -12,6 +12,8 @@
 - アイテムを使用したときに特定のプログラムを実行することができる。
 - アイテムの種類だけでなく、名前を条件にしてトリガーできる。
 
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/003-item_trigger/media/01.gif" vspace="10">
+
 # アイテムを使用したときを検知する
 アイテムを検知する場合は `world` クラスの `afterEvents`プロパティ内にある `itemUse` プロパティ内にある `subscribe()` メソッドを使用します。
 
@@ -44,7 +46,6 @@ world.afterEvents.itemUse.subscribe((event: ItemUseAfterEvent) => {
 ```
 
 上記の例では鉄の剣を使ったら条件分岐の中が実行されます。
-
 
 ## アイテムを使用したときにメッセージを送信する
 メッセージを表示する方法は `Player` クラスと `World` クラスを使う方法がありますが、ここでは後者を使ってみます。
@@ -197,6 +198,8 @@ world.afterEvents.itemUse.subscribe((event: ItemUseAfterEvent) => {
 });
 ```
 
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/003-item_trigger/media/01.gif" vspace="10">
+
 ## アイテム名ごとにテレポートする方向を変える
 このプログラムは既出ですので、条件式をネームタグに変えただけで実装できます。
 
@@ -233,6 +236,9 @@ world.afterEvents.itemUse.subscribe((event: ItemUseAfterEvent) => {
 });
 ```
 
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/003-item_trigger/media/02.gif" vspace="10">
+
 # おまけ - MakeCode
 教育版マインクラフトを使用している場合、ビジュアルプログラミングでも同様のことができます。ただし、アイテム名を検知することは出来ませんので、アイテムごとでの発火が可能です。
 
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/003-item_trigger/media/03.jpg" vspace="10">
