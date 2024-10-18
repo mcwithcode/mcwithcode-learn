@@ -1,5 +1,5 @@
 # Script API による GUI の実装 (ActionForm 編)
-Sctipt API と server-ui を使って、マインクラフトにオリジナルのメニューを作成することができます。
+Sctipt API と server-ui パッケージを使って、マインクラフトにオリジナルのダイアログメニューを作成してみましょう。作ったメニューにボタンを追加して、ボタンを操作したときの処理を作ることも可能です。
 
 # 実行環境
 - TypeScript 5.6.2
@@ -13,6 +13,9 @@ Sctipt API と server-ui を使って、マインクラフトにオリジナル�
 - ActionForm を定義してUIを構成できる。
 - フォーム内の UI を操作して処理を実行できる。
 
+こんなの作ります↓
+
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/004-action-form/media/Animation.gif" vspace="10">
 
 # server-ui パッケージの導入
 アクションフォームを作成するには `@minecraft/server-ui` パッケージの導入が必要です。
@@ -63,7 +66,7 @@ world.afterEvents.itemUse.subscribe((event: ItemUseAfterEvent) => {
 });
 ```
 
-ですが、モーダルはモーダルとしての機能 (function) として実装したいと思いますので、関数として宣言しておくのがおすすめです。
+モーダルはモーダルとしての機能 (function) として実装したいと思いますので、関数として宣言しておくのがおすすめです。
 
 ```ts
 import { ItemStack, ItemUseAfterEvent, world, Player } from "@minecraft/server";
@@ -87,15 +90,17 @@ function showActionForm(player: Player) {
 }
 ```
 
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/004-action-form/media/01.jpg" vspace="10">
+
 また、フォームのUIを構成する最低限の要素として、ボタン要素の初期化が必要です。初期化されていない状態で `show()` メソッドを実行すると、下記の様なエラーが表示されます。
 
 ```txt
 無効な json 形式を受信しました。エラー::要求されたプロパティ 'buttons' を検出することができませんでした。
 ```
 
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/004-action-form/media/02.jpg" vspace="10">
 
-
-マイクラのUIフォームは json (JSON UI) で定義されており、タイトル、ボディー、ボタン要素が代入されていないと正しくUIが構成されません。 
+マイクラのUIフォームは JSON UI で定義されており、細かい調整を行う場合はリソースパックで別途 UI を作る必要があります。また、ボタン要素が代入されていないと正しくUIが構成されません。 
 
 ## title
 フォームのタイトルを定義する場合は `title()` メソッドを使用します。引数には文字列型を入れますが、セクションを使用したカラーコードの指定も可能です。
@@ -121,6 +126,8 @@ form.body("本文をここに");
 form.body("§61行目§r\n2行目\n3行目");
 ```
 
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/004-action-form/media/03.jpg" vspace="10">
+
 ## button
 フォームにボタンを設置する場合は `button()` メソッドを使用します。アイコンを表示する場合は第ニ引数にアイコン（画像ファイル）のパスを記載します。例えば、通常のアイテムはこれらのディレクトリにあります。
 
@@ -136,7 +143,7 @@ form.button("めっちゃ長い文字列をこんなふうに記載すると文�
 form.button("アイコンも置けるよ", "textures/items/apple");
 ```
 
-
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/004-action-form/media/04.jpg" vspace="10">
 
 ## show
 `show()` は対象のプレイヤーにGUIを表示させるメソッドです。必ず記載しないとGUIが表示されません。
@@ -188,7 +195,7 @@ form.show(player).then((response: ActionFormResponse) => {
 }
 ```
 
-また、予期しないエラーが発生した場合 `catch` に流すこともできます。キャンセル理由は `cancelationReason` プロパティで取得できますが、プレイヤーが意図的にキャンセルした場合は `PlayerClosed` と表示されます。
+また、予期しないエラーが発生した場合 `catch` に流すこともできます。キャンセル理由は `cancelationReason` プロパティで取得できますが、プレイヤーが意図的にキャンセルした場合は "PlayerClosed" と表示されます。
 
 ```ts
 form.show(player).then((response: ActionFormResponse) => {
@@ -256,6 +263,8 @@ function showActionForm(player: Player) {
 }
 ```
 
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/004-action-form/media/example01.jpg" vspace="10">
+
 ## アイテムを付与する例
 選択したボタンに応じて、装備一式を与える機能をつくります。
 
@@ -317,3 +326,5 @@ function giveEquipments(material: string, player: Player) {
     player.runCommandAsync(`/give @s ${material}_boots`);
 }
 ```
+
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/004-action-form/media/Animation.gif" vspace="10">
