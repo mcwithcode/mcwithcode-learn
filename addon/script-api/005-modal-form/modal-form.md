@@ -15,6 +15,7 @@ Sctipt API と server-ui パッケージを使って、マインクラフトに�
 
 ↓こんなのをつくります。
 
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/005-modal-form/media/example2.gif" vspace="10">
 
 # server-ui パッケージの導入
 モーダルフォームを作成するには `@minecraft/server-ui` パッケージの導入が必要です。
@@ -116,6 +117,7 @@ modal.textField("名前", "スティーブ");
 modal.textField("名前", "", "アレックス");
 ```
 
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/005-modal-form/media/01.gif" vspace="10">
 
 ## toggle
 オン・オフの入力を受け付ける UI で `toggle()` メソッドを使用します。`defaultValue` は省略可能です。
@@ -137,7 +139,7 @@ modal.toggle("トグルの設定");
 modal.toggle("トグルの設定", true);
 ```
 
-
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/005-modal-form/media/02.gif" vspace="10">
 
 ## slider
 整数値の入力を受け付ける UI で `slider()` メソッドを使用します。`defaultValue` は省略可能です。
@@ -162,7 +164,7 @@ modal.slider("1番目の例", 0, 64, 1);
 modal.slider("2番目の例", 0, 100, 5, 10);
 ```
 
-
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/005-modal-form/media/03.gif" vspace="10">
 
 ## dropdown
 複数の選択肢から選べる UI で `dropdown()` メソッドを使用します。
@@ -187,6 +189,7 @@ let drinkList = ["水", "緑茶", "紅茶", "コーヒー", "炭酸水"];
 modal.dropdown("ドロップダウンの例2", drinkList, 1);
 ```
 
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/005-modal-form/media/04.gif" vspace="10">
 
 ## submitButton
 データを送信する際のボタンを変更する場合は `submitButton()` メソッドを使用します。が、モーダル生成時にボタンもデフォルトで設定されており、「送信」というボタンになっているので、基本あまり使いません。ボタンの文字を変更したい場合に使います。
@@ -222,7 +225,7 @@ function showModalForm(player: Player) {
 
 このように UI が並んでいたとします。
 
-
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/005-modal-form/media/02.jpg" vspace="10">
 
 このとき、値としては以下のように取得できます。
 
@@ -325,6 +328,8 @@ function showModalForm(player: Player) {
 }
 ```
 
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/005-modal-form/media/example1.gif" vspace="10">
+
 ## パーティクルずかんの例
 
 パーティクルをコマンドで動かすとき、Tabキーによる補完機能がなくて不便ですよね。そこで、あらかじめプログラムからパーティクルを呼び出せるようにして、どんな演出だったかを確認できるような機能をつくってみます。
@@ -372,20 +377,22 @@ function showModalForm(player: Player) {
         const y = response.formValues[2];
         const z = response.formValues[3];
         let time = response.formValues[4] as number;
-        const delay = response.formValues[5] as number + 1;
+        const delay = response.formValues[5] as number;
 
-        let timeCount: number = 0;
-
-        system.runInterval(() => {
-            if(timeCount > (time / delay)) {
-                return 0;
+        delay != 0 ? time = time / delay : time ;
+        const runId = system.runInterval(() => {
+            if(time < 0) {
+                system.clearRun(runId);
+            } else {
+                player.runCommand(`titleraw @s actionbar {
+                    "rawtext":[{"text":"${particle} を表示中\n残り表示回数 : ${Math.round(time)} 回"}]
+                }`);
+                player.runCommand(`particle ${particle} ${x} ${y} ${z}`);
             }
-            player.runCommand(`titleraw @s actionbar {
-                "rawtext":[{"text":"${particle} を表示中\n残り : ${((time / delay) - timeCount).toFixed(2)}秒"}]
-            }`);
-            player.runCommand(`particle ${particle} ${x} ${y} ${z}`);
-            timeCount++;
+            time--; 
         }, delay);
     });
 }
 ```
+
+<img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/005-modal-form/media/example2.gif" vspace="10">
