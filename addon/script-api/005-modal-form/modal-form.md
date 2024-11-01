@@ -396,3 +396,58 @@ function showModalForm(player: Player) {
 ```
 
 <img src="https://raw.githubusercontent.com/mcwithcode/mcwithcode-learn/refs/heads/main/addon/script-api/005-modal-form/media/example2.gif" vspace="10">
+
+# おまけ async/await
+ちなみにアクションフォームもそうですが `that()` は非同期メソッドのため、async/await が使えます。
+
+```ts
+// ここより上は省略
+async function showModalForm(player: Player) {
+    const modal = new ModalFormData();
+    const particleList: string[] = [
+        "minecraft:mobflame_single",
+        "minecraft:white_smoke_particle",
+        "minecraft:weaving_emitter",
+        "minecraft:large_explosion",
+        "minecraft:mobspell_emitter"
+    ]
+    const location: Vector3 = player.location;
+
+    modal.title("パーティクルずかん")
+    modal.dropdown("パーティクル", particleList);
+    modal.textField("x 座標", "", Math.round(location.x).toString());
+    modal.textField("y 座標", "", Math.round(location.y).toString());
+    modal.textField("z 座標", "", Math.round(location.z).toString());
+    modal.slider("実行時間 [tick]", 1, 100, 1);
+    modal.slider("遅延 [tick]", 0, 20, 1);
+    modal.submitButton("実行する");
+
+    let response = await modal.show(player);
+    if(response.canceled) {
+        return 0;
+    } else {
+        const particle = particleList[response.formValues[0] as number];
+        const x = response.formValues[1];
+        const y = response.formValues[2];
+        const z = response.formValues[3];
+        let time = response.formValues[4] as number;
+        const delay = response.formValues[5] as number;
+
+        delay != 0 ? time = time / delay : time ;
+        const runId = system.runInterval(() => {
+            if(time < 0) {
+                system.clearRun(runId);
+            } else {
+                player.runCommand(`titleraw @s actionbar {
+                    "rawtext":[{"text":"${particle} を表示中\n残り表示回数 : ${Math.round(time)} 回"}]
+                }`);
+                player.runCommand(`particle ${particle} ${x} ${y} ${z}`);
+            }
+            time--; 
+        }, delay);
+    }
+
+}
+```
+
+ロジックが複雑になる場合は外側に出しておいて処理をわけたほうが良い場合もありますが、これは開発者の意向や規模にもよります。
