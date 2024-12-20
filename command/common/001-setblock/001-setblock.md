@@ -109,7 +109,7 @@ Java版ではブロックステートとして `type` に値を指定します�
 `10 20 10` の座標に青の彩釉テラコッタを東向きに設置する場合
 
 ```txt
-/setblock 10 20 10 minecraft:blue_glazed_terracotta["facing_direction"=2]
+/setblock 10 20 10 minecraft:blue_glazed_terracotta["facing_direction"=4]
 ```
 
 ## Java版での書き方
