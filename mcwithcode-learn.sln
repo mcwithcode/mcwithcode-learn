@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "programming", "programming", "{3CB7AB1E-1C70-03C7-4DAF-A2555EAE4171}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "minecraft-connection", "minecraft-connection", "{DB41E42E-5954-AE2C-72B9-59E45E526208}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "001-fireworks-basic", "001-fireworks-basic", "{BCCE31CD-1528-9F05-ABDA-C2C20EFE0567}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "programming\minecraft-connection\001-fireworks-basic\src\Sample.csproj", "{79811F02-EB6D-AD9A-EEFC-847D5C135166}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79811F02-EB6D-AD9A-EEFC-847D5C135166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79811F02-EB6D-AD9A-EEFC-847D5C135166}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79811F02-EB6D-AD9A-EEFC-847D5C135166}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79811F02-EB6D-AD9A-EEFC-847D5C135166}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DB41E42E-5954-AE2C-72B9-59E45E526208} = {3CB7AB1E-1C70-03C7-4DAF-A2555EAE4171}
+		{BCCE31CD-1528-9F05-ABDA-C2C20EFE0567} = {DB41E42E-5954-AE2C-72B9-59E45E526208}
+		{79811F02-EB6D-AD9A-EEFC-847D5C135166} = {BCCE31CD-1528-9F05-ABDA-C2C20EFE0567}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9FE6506-A992-4071-9935-CE6B718BCBDC}
+	EndGlobalSection
+EndGlobal
